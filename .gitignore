@@ -1,0 +1,37 @@
+# ── 依赖与包缓存 ────────────────────────────────────────────────
+node_modules/
+.npm-cache/
+.pnpm-store/
+.pnpm-cache/
+.pnpm-state/
+*.tgz
+
+# ── 运行时状态 / 密钥 / 日志（绝不入库）────────────────────────
+state/
+config.json
+.env
+.env.*
+*.log
+*.log.*
+*.err
+*.out
+bili/state/
+cookies.json
+SESSDATA
+
+# ── 大体积目录：模型、虚拟环境、运行时分发、二进制 ────────────
+tts/GPT-SoVITS/
+tts/venv/
+tts/asrvenv/
+tts/dl/
+tts/assets/
+tts/samples/
+SnowLuma/app/
+tmp/
+tools/npm/
+*.zip
+
+# ── 本机临时产物 ───────────────────────────────────────────────
+qqbot/*qr*.png
+qqbot-bind-qr-*.png
+.git-upstream-backup/

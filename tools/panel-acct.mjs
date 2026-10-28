@@ -1,0 +1,2 @@
+const r = await fetch("http://127.0.0.1:3200/api/account", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
+console.log("api/account:", r.status, (await r.text()).slice(0, 400));

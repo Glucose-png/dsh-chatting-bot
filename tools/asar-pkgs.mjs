@@ -1,0 +1,11 @@
+import fs from "node:fs";
+const p = "E:/deepseek_harness/resources/app.asar";
+const fd = fs.openSync(p, "r");
+const head = Buffer.alloc(16); fs.readSync(fd, head, 0, 16, 0);
+const headerSize = head.readUInt32LE(12);
+const jsonBuf = Buffer.alloc(headerSize); fs.readSync(fd, jsonBuf, 0, headerSize, 16);
+const header = JSON.parse(jsonBuf.toString("utf8"));
+const names = Object.keys(header.files["dsh"].files["node_modules"]["@deepseek-ai"].files);
+console.log("total @deepseek-ai pkgs:", names.length);
+console.log("persona-ish:", names.filter(n => /persona|prompt|role/i.test(n)).join(", "));
+console.log("tool/web:", names.filter(n => /tool|web|search/i.test(n)).join(", "));

@@ -1,0 +1,14 @@
+import fs from "node:fs";
+const src = "G:/dsh/qqbot/qq-bridge/config.example.json";
+const cfg = JSON.parse(fs.readFileSync(src, "utf8"));
+cfg.dsh.baseUrl = "http://127.0.0.1:14476";
+cfg.dsh.authToken = "";
+cfg.snowluma.homeDir = "G:/dsh/SnowLuma/app";
+cfg.snowluma.launcherPath = "G:/dsh/SnowLuma/app/launcher.bat";
+cfg.sessionCwd = "G:/dsh/qqbot/workspace";
+cfg.ownerQQ = null;
+cfg.allow = { private: [], groups: [] };
+cfg.allowAllWhenEmpty = false;
+cfg.ackMessage = "";
+fs.writeFileSync("G:/dsh/qqbot/qq-bridge/config.json", JSON.stringify(cfg, null, 2) + "\n", "utf8");
+console.log("written", cfg.dsh.baseUrl, cfg.snowluma.homeDir);

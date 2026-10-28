@@ -1,0 +1,25 @@
+{
+  "snowluma": {
+    "httpUrl": "http://<YOUR_LOCAL_IP>:3000",
+    "wsUrl": "ws://<YOUR_LOCAL_IP>:3001",
+    "accessToken": ""
+  },
+  "dsh": {
+    "baseUrl": "http://127.0.0.1:14476",
+    "provider": "deepseek-account",
+    "model": "deepseek-flash",
+    "reasoningEffort": "high"
+  },
+  "consolePort": 3100,
+  "ownerQQ": 100000000,
+  "allow": {
+    "groups": [],
+    "private": [100000000]
+  },
+  "deny": {
+    "groups": [],
+    "private": []
+  },
+  "mode": "closed-agent",
+  "sessionCwd": "/opt/qqbot-bridge/workspace"
+}

@@ -1,0 +1,13 @@
+const base = "http://127.0.0.1:5099";
+const login = await (await fetch(base + "/api/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ password: "change-me" }) })).json();
+const h = { "x-snowluma-token": login.token, "content-type": "application/json" };
+const cur = await (await fetch(base + "/api/config/3949453849", { headers: h })).json();
+const cfg = cur.config;
+for (const s of cfg.networks.httpServers) s.accessToken = "";
+for (const s of cfg.networks.wsServers) s.accessToken = "";
+const r = await fetch(base + "/api/config/3949453849", { method: "POST", headers: h, body: JSON.stringify(cfg) });
+console.log("save", r.status, (await r.text()).slice(0, 300));
+await new Promise(r => setTimeout(r, 3000));
+const after = await (await fetch(base + "/api/config/3949453849", { headers: h })).json();
+console.log("tokens:", JSON.stringify({ http: after.config.networks.httpServers[0].accessToken, ws: after.config.networks.wsServers[0].accessToken }));
+console.log("conns:", JSON.stringify(await (await fetch(base + "/api/connections", { headers: h })).json()).slice(0, 400));
